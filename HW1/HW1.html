@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Homework #1</title>
+        <link href="../styles/main.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li>Homework #1</li>
+        </ul>
+        <h1>Homework #1</h1>
+        <h2>Hypothesis</h2>
+        <h3>H1: Wind speeds at Salar de Pajonales do not change seasonally.<p></p>
+        H2: Wind speed and direction at Salar de Pajonales have an approximately normal distribution.</h3>
+        <p></p>
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+        <p></p>
+        <h2>Wind speeds (m/s) from October 2018 to November 2019, Salar de Pajonales, Chile.</h2>
+        <h3>These are the raw data.  Click and drag a box on the lower graph to zoom in on the selected time period.
+        We can see that wind speeds not only change seasonally but also experience diurnal changes.</h3>
+        <div id="vis_time"></div>
+        <p></p>
+        <h3>
+            Wind speed histogram.<p></p>
+            Geologists typically work with right skewed data.  The histogram is a good way to see
+            if the data can benefit from a transformation.  We can see the wind speeds are right skewed and a log
+            transformation of the y-axis should smooth out the distribution.
+        </h3>
+        <div id="vis_histo_speed"></div>
+        <div id="vis_histo_logspeed"></div>
+        <div id="vis_histo_relfreqspeed"></div>
+<p>
+</p>
+        <h3>Looks like a log transform did not help because of the large number of zero and negative values.  These might
+            be sensor errors or something else because log speed should not return a negative value.  I want to remove
+        them from the dataset, but I should look at the relative frequency of all wind speeds to get a better idea of how
+        they are distributed.
+            <p></p>
+            We can see in the red histogram 60% of wind speeds are 2 m/s (~4.5 mph) or less.  These speeds are not
+            high enough to include in my multiple regression model and can be removed.
+        </h3>
+        <p>
+        </p>
+
+        <script>
+            const spec = "scatter1.json";
+            vegaEmbed("#vis_time", spec)
+                // result.view provides access to the Vega View API
+                .then(result => console.log(result))
+                .catch(console.warn);
+
+            const spec_bar_speed = "histo_spd.json";
+            vegaEmbed("#vis_histo_speed", spec_bar_speed)
+                .then(result => console.log(result))
+                .catch(console.warn);
+
+            const spec_bar_logspeed = "histo_logspd.json";
+            vegaEmbed("#vis_histo_logspeed", spec_bar_logspeed)
+                .then(result => console.log(result))
+                .catch(console.warn);
+
+            const spec_bar_relfreqspeed = "histo_relfreqspd.json";
+            vegaEmbed("#vis_histo_relfreqspeed", spec_bar_relfreqspeed)
+                .then(result => console.log(result))
+                .catch(console.warn);
+
+
+        </script>
+    </body>
+</html>

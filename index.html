@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+
+        <title>WebPage</title>
+        <link href="styles/main.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <h2 id="intro">Welcome to the homework portal</h2>
+        <p>What is your name?</p>
+        <input type="text" id="name"><button id="buttonName">Set</button>
+
+        <ul>
+            <li>Home</li>
+            <li><a href="HW1/HW1.html">Homework #1</a></li>
+            <li><a href="HW1/HW1.html">Homework #2</a></li>
+
+        </ul>
+    <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+
+    <h>Sent from space...</h>
+
+</body>
+
+
+
+<script>
+        function app() {
+            function printMyName() {
+                let myName = document.getElementById("name").value;
+                document.getElementById("intro").innerHTML = "Hello "+myName;
+            }
+            document.getElementById("buttonName").onclick = printMyName
+        }
+        window.onload=app;
+</script>
+
+</html>

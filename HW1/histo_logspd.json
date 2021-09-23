@@ -1,0 +1,15 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 200,
+    "height": 300,
+    "padding": 5,
+    "data": {"url": "data/Wind_logSpeed.csv"},
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "bin": true,
+            "field": "logspeed"
+        },
+        "y": {"aggregate": "count"}
+    }
+}
