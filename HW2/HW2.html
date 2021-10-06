@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Homework #2</title>
+    <link href="../styles/main.css" rel="stylesheet"/>
+</head>
+<body>
+<ul>
+    <li><a href="../index.html">Home</a></li>
+
+</ul>
+<h1>Homework #2</h1>
+<h2>Hypothesis</h2>
+<h3>H1: .<p></p>
+    <div id="vis_dem"></div>
+    <div id="vis_contour"></div>
+    H2: .</h3>
+<p></p>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+
+<script>
+
+    // Register a discrete color scheme named "redinvert" that can then be used in Vega specs
+    vega.scheme('redinvert', ['#67000d', '#a50f15', '#cb181d', '#ef3b2c', '#fb6a4a', '#fc9272', '#fcbba1', '#fee0d2',
+        '#fff5f0']);
+
+    vega.scheme('red2gray', ['#67001f', '#b2182b', '#d6604d', '#f4a582', '#fddbc7', '#ffffff', '#e0e0e0', '#bababa',
+        '#878787', `#4d4d4d`, '#1a1a1a']);
+
+
+    const spec = "redgrayIso.json";
+    vegaEmbed("#vis_contour", spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec = "isocontour.json";
+    vegaEmbed("#vis_dem", spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

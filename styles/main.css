@@ -1,17 +1,26 @@
+html {
+    background: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+}
+
+
 body {
-    background:#999;
+
     font-family: Arial;
+
 }
 
 h1,h2  {
-    color:black;
+    color:darkblue;
 }
 
 li {
-    color:midnightblue;
+    color:Black;
 }
 
 p {
-    padding: 3px;
+    padding: 5px;
 
 }
