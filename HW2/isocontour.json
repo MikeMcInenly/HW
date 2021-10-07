@@ -32,7 +32,7 @@
           "type": "isocontour",
           "scale": {"expr": "width / datum.width"},
           "smooth": {"signal": "smooth"},
-          "thresholds": {"signal": "sequence(2200, 2500, 15)"}
+          "thresholds": {"signal": "sequence(2200, 2500, 20)"}
         }
       ]
     }
@@ -56,7 +56,12 @@
         "enter": {
           "stroke": {"value": "#ccc"},
           "strokeWidth": {"value": 1},
-          "fill": {"scale": "color", "field": "contour.value"}
+          "fill": {"scale": "color", "field": "contour.value"},
+          "legend": {
+            "type": "gradient",
+            "gradientStrokeColor": "redinvert",
+            "format": "number",
+            "direction": "horizontal"}
         }
       },
       "transform": [

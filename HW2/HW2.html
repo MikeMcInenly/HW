@@ -10,18 +10,59 @@
 
 </ul>
 <h1>Homework #2</h1>
-<h2>Hypothesis</h2>
-<h3>H1: .<p></p>
+<h3>Yellowstone National Park is home to one of 12 super volcanoes on this planet.  Below the surface of the Park exists
+a multi-chamber magmatic body that ranges in composition from granite to basalt.  The upper granitic chamber is the source
+rock for most of the rock formations found in the Park today.  Silica rich, extrusive igneous rocks, known as rhyolite,
+create different formation types such as lava flows and resurgent domes.  Resurgent domes form by uplift due to
+increasing temperatures and pressures as the magma chambers evolve.  Eventually these domes fracture along the base and create weak zones where
+fluids are able to circulate.  Major volcanic eruptions happen when these fracture zones are deep enough to release the
+pressure caused by the magma chamber.  Lava flows occur when underground fractures are present and pressures high but not prime for eruption.
+The last major eruption in the Park was roughly 640,000 years ago, however, the last laval flow was only 70,000 years ago,
+and today there are two active resurgent domes.<p></p>
+Silica rich lava is very viscous and flows across a surface much like toothpaste flowing downhill.  Once cooled, these flows
+have a cliff like appearance with large changes in elevation over short distances.  A resurgent dome, similar to a
+skin blister, is an uplifted piece of ground and characterized by a more gradual change in elevation over distance.<p></p>
+Centered in a 10-meter resolution digital elevation model from the USGS is the Upper Geyser Basin, Yellowstone National Park, WY.
+This dataset is used to evaluate the following hypotheses.</h3><p></p>
+<h2>Hypotheses:</h2>
+<h3>H1: Geyser basins tend to favor areas where fractures promote hydrothermal water circulation in the shallow subsurface.
+These factures zones are commonly associated with the edges of lava flows.  Is the Upper Geyser Basin (home to Old Faithful
+Geyser) located near the edge of a lava flow?<p></p>
 
-    H2: .</h3>
+    H2: Lava flows and resurgent domes are characterized by different rates of change in elevation over distance.  Can
+ we accurately identify the difference between these rocks formations solely on changes in elevation?</h3>
 <p></p>
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-<div id="vis_redinvert"></div>
-<div id="vis_redtogray"></div>
+
+
+
+<div style="width: 100%; display: table;">
+    <div style="display: table-row">
+        <div style="width: 300px; display: table-cell;" id="vis_redinvert"> </div>
+        <div style="width: 300px; display: table-cell;" id="vis_redtogray"> </div>
+    </div>
+</div>
+
+<h2>Summary</h2>
+<h3>Visualization color is an important, yet often misused component in science communication. A recent article by
+Crameri, F., et. al., (2020) in Nature Communications produced this <a href="https://www.nature.com/articles/s41467-020-19160-7/figures/6">flow chart</a>
+in an effort to simplify color choices.  I used the flowchart to guide my choice of color ramps, but for the sake of science
+I did not follow the recommendation for one of the visualizations.  If you haven't clicked the flowchart link yet, good!
+Please grade the visualizations before looking at the color selection criteria outlined by the flow chart.  I am curious
+about the differences in opinion!  For the sake of ditching widely used elevation color ramps, I assumed my data were not
+associated with an intuitive color scheme.<p></p>
+
+</h3>
+
+
+
+Crameri, F., Shephard, G.E. & Heron, P.J. The misuse of colour in science communication. Nat Commun 11, 5444 (2020).
+https://doi.org/10.1038/s41467-020-19160-7
 <script>
+
 
     // Register a discrete color scheme named "redinvert" that can then be used in Vega specs
     vega.scheme('redinvert', ['#67000d', '#a50f15', '#cb181d', '#ef3b2c', '#fb6a4a', '#fc9272', '#fcbba1', '#fee0d2',

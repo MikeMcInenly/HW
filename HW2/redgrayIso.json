@@ -32,7 +32,7 @@
           "type": "isocontour",
           "scale": {"expr": "width / datum.width"},
           "smooth": {"signal": "smooth"},
-          "thresholds": {"signal": "sequence(2200, 2500, 15)"}
+          "thresholds": {"signal": "sequence(2200, 2500, 20)"}
         }
       ]
     }
