@@ -43,8 +43,17 @@
     {
       "name": "color",
       "type": "linear",
-      "domain": [2200, 2490],
+      "domain": [2200, 2500],
       "range": {"scheme": "red2gray"}
+    }
+  ],
+
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "bottom-right",
+      "titlePadding": 10,
+      "title": "Elevation (m)"
     }
   ],
 
