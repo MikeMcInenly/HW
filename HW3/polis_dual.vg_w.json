@@ -1,0 +1,239 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A gallery of maps showcasing different cartographic projections.",
+  "autosize": "pad",
+
+  "signals": [
+    { "name": "mapWidth", "value": 600},  changes in width and height matter and alter the center of projection
+    { "name": "mapHeight", "value": 400},
+    { "name": "projScale", "value": 45},
+    { "name": "projTranslate", "update": "[mapWidth / 2, mapHeight / 2]" },
+    {
+      "name": "Color Attribute: ",
+      "value": "Democracy",
+      "bind": {
+        "input": "select",
+        "options": ["Bronze",
+          "Colonies",
+          "Delian L",
+          "Democracy",
+          "Elevation m",
+          "Grid",
+          "Hellenicity",
+          "In/out",
+          "Koinon",
+          "Polisity",
+          "Proxenoi",
+          "Region #",
+          "Silver",
+          "Victors",
+          "Walls",
+          "area 1",
+          "area 2",
+          "polis#",
+          "prom 1",
+          "prom 2",
+          "prom 3",
+          "staseis"
+        ]
+      }
+    }
+  ],
+
+  "data": [ -> General Parent level.  Establishes the objects which are detailed below
+    {
+      "name": "projections", -> each square to assign marks (the Parent level)
+      "values": [
+        {"type":"mercator","scale":800,"center":[34,36], "label": "Mediterranean"},
+        {"type":"mercator","scale":1800,"center":[30,36], "label": "Aegean"}
+      ]
+    },
+    {
+      "name": "world",
+      "url": "data/earth-coastlines-500m.geo.json" -> find something cooler
+    },
+    {
+      "name": "graticule", -> lat/long grid lines
+      "transform": [
+        { "type": "graticule" }
+      ]
+    },
+    {
+      "name": "sphere",
+      "values": [{"type": "Sphere"}]
+    },
+    {
+      "name": "labelOffsets", -> grids for mediteranian and agean labels
+      "values": [
+        {"dx": -1, "dy": -1},
+        {"dx": -1, "dy": 1},
+        {"dx": 1, "dy": -1},
+        {"dx": 1, "dy": 1}
+      ]
+    },
+    {
+      "name": "polis", -> in data folder
+      "url": "data/polis.json",
+      "format": {
+        "type": "json",
+        "property": "features"
+      },
+      "transform": [{"type:"filter", "expr":"datum.properties.staseis>0""}] ->"staseis" is the column in the spreadsheet
+    } -> can also use transform for stats or other math processes.  Simple way is to calc stats in R and append to the spreadsheet.  Could also make another without staseis
+  ],
+
+  "layout": { -> general assignment of marks layout
+    "columns": 2,
+    "padding": 10
+  },
+  "scales": [
+    {
+      "name": "color",
+      "type": "symlog",
+      "domain": [0, 20],
+      "range": {"scheme": "turbo"}
+}
+  ],
+
+  "marks": [ ->specifies the marks (round circles, etc)
+    {
+      "type": "group", ->
+      "from": {"data": "projections"}, -> references projections above
+
+      "signals": [
+        {"name": "width", "update": "mapWidth"},
+        {"name": "height", "update": "mapHeight"}
+      ],
+
+      "encode": {
+        "enter": {
+          "width": {"signal": "mapWidth"},
+          "height": {"signal": "mapHeight"},
+          "clip": {"value": true}
+        }
+      },
+
+      "projections": [ -> defines projection for the two maps. This is the child level of the Data parent
+        {
+          "name": "projection",
+          "type": {"signal": "parent.type"},
+          "scale": {"signal": "parent.scale"},
+          "center": {"signal": "parent.center"}
+        }
+      ],
+
+      "marks": [ -> visual characteristics of the objects defined at the Parent level
+
+        {
+          "type": "shape",
+          "from": {"data": "sphere"},
+          "encode": {
+            "enter": {
+              "fill": {"value": "aliceblue"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "world"},
+          "clip": {"sphere": "projection"},
+          "encode": {
+            "enter": {
+              "strokeWidth": {"value": 0.25},
+              "stroke": {"value": "#888"},
+              "fill": {"value": "Wheat"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "graticule"},
+          "clip": {"sphere": "projection"},
+          "interactive": false,
+          "encode": {
+            "enter": {
+              "strokeWidth": {"value": 1},
+              "stroke": {"value": "#ddd"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "polis"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 1.0},
+              "fill": {"scale": "color", "field": "properties.staseis"} -> replace staseis with other spreadsheet data
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection",
+              "pointRadius": 1.25
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "from": {"data": "labelOffsets"},
+          "encode": {
+            "enter": {
+              "fill": {"value": "white"},
+              "dx": {"field": "dx"},
+              "dy": {"field": "dy"},
+              "x": {"value": 5},
+              "y": {"signal": "mapHeight - 5"},
+              "baseline": {"value": "bottom"},
+              "fontSize": {"value": 14},
+              "fontWeight": {"value": "bold"},
+              "text": {"signal": "parent.label"}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "fill": {"value": "black"},
+              "x": {"value": 5},
+              "y": {"signal": "mapHeight - 5"},
+              "baseline": {"value": "bottom"},
+              "fontSize": {"value": 14},
+              "fontWeight": {"value": "bold"},
+              "text": {"signal": "parent.label"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "title": "Staseis Occurrences",
+      "fill": "color",
+      "orient": "bottom",
+      "offset": 5,
+      "type": "gradient",
+      "gradientLength": 300,
+      "gradientThickness": 12,
+      "titlePadding": 10,
+      "titleOrient": "left",
+      "titleAnchor": "end",
+      "direction": "horizontal"
+    }
+  ],
+
+  "config": {
+    "legend": {"layout": {"anchor": "middle"}}
+  }
+}

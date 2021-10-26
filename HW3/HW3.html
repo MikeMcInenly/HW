@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <title>Homework #3</title>
+    <link href="../styles/main.css" rel="stylesheet"/>
+</head>
+<body>
+<ul>
+    <li><a href="../index.html">Home</a></li>
+
+</ul>
+<h1>Homework #3</h1>
+<h3>Insert Problem Context - how to look at the data and evaluate relationships that explain the frequency </h3><p></p>
+<h2>Hypotheses:</h2>
+<h3>H1: What is my hypothesis?!</h3>
+<p></p>
+
+<div id="polis_geographic"></div>
+
+<script>
+
+    const spec_polis = "polis_dual.vg.json";
+    vegaEmbed("#polis_geographic", spec_polis)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+
+
+
+
+</script>
+</body>
+</html>

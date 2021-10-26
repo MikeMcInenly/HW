@@ -1,0 +1,263 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "An interactive map depicting polis attributes and locations.",
+  "padding": 10,
+  "width": 800,
+  "height": 400,
+  "autosize": "none",
+
+  "signals": [
+    {
+      "name": "Color Attribute: ",
+      "value": "Democracy",
+      "bind": {
+        "input": "select",
+        "options": ["Bronze",
+          "Colonies",
+          "Delian L",
+          "Democracy",
+          "Elevation m",
+          "Grid",
+          "Hellenicity",
+          "In/out",
+          "Koinon",
+          "Polisity",
+          "Proxenoi",
+          "Region #",
+          "Silver",
+          "Victors",
+          "Walls",
+          "area 1",
+          "area 2",
+          "polis#",
+          "prom 1",
+          "prom 2",
+          "prom 3",
+          "staseis"
+        ]
+      }
+    }],
+
+  "data": [
+    {
+      "name": "world",
+      "url": "data/world-110m.json",
+      "format": {
+        "type": "topojson",
+        "feature": "countries"
+      }
+    },
+    {
+      "name": "polis",
+      "url": "data/polis.json",
+      "format": {
+        "type": "json",
+        "property": "features"
+      }
+    },
+    {
+      "name": "graticule",
+      "transform": [
+        { "type": "graticule" }
+      ]
+    },
+    {
+      "name": "sphere",
+      "values": [{"type": "Sphere"}]
+    }
+  ],
+
+  "projections": [
+    {
+      "name": "projection_greece",
+      "scale": 1000,
+      "type": "mercator",
+      "center": [74,37]
+    },
+    {
+      "name": "projection_med",
+      "scale": 1800,
+      "type": "mercator",
+      "center": [55,37]
+    }
+  ],
+
+  "layout": {
+    "bounds": "flush",
+    "columns": 2,
+    "padding": 10
+  },
+
+  "scales": [
+    {
+      "name": "color",
+      "type": "linear"
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "group",
+      "name": "medi",
+      "encode": {
+        "enter": {
+          "x": {"value": 0},
+          "y": {"value": 0},
+          "height": {"value": 400},
+          "width": {"value": 800},
+          "fill": {"value": "transparent"}
+        }
+      },
+      "marks": [
+        {
+          "type": "shape",
+          "from": {
+            "data": "sphere"
+          },
+          "encode": {
+            "enter": {
+              "fill": {
+                "value": "Azure"
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_med"
+            }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {
+            "data": "world"
+          },
+          "encode": {
+            "update": {
+              "fill": {
+                "value": "Wheat"
+              },
+              "stroke": {
+                "value": "black"
+              },
+              "strokeWidth": {
+                "value": 0.35
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_med"
+            }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {
+            "data": "polis"
+          },
+          "encode": {
+            "update": {
+              "opacity": {
+                "value": 0.5
+              },
+              "fill": {
+                "value": "red"
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_med",
+              "pointRadius": 1.25
+            }
+          ]
+        }]
+    },
+    {
+      "type": "group",
+      "name": "greece",
+      "encode": {
+        "enter": {
+          "x": {"value": 0},
+          "y": {"value": 405},
+          "height": {"value": 400},
+          "width": {"value": 800},
+          "fill": {"value": "transparent"}
+        }
+      },
+      "marks": [
+        {
+          "type": "shape",
+          "from": {
+            "data": "sphere"
+          },
+          "encode": {
+            "enter": {
+              "fill": {
+                "value": "Azure"
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_greece"
+            }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {
+            "data": "world"
+          },
+          "encode": {
+            "update": {
+              "fill": {
+                "value": "Wheat"
+              },
+              "stroke": {
+                "value": "black"
+              },
+              "strokeWidth": {
+                "value": 0.35
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_greece"
+            }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {
+            "data": "polis"
+          },
+          "encode": {
+            "update": {
+              "opacity": {
+                "value": 0.5
+              },
+              "fill": {
+                "value": "red"
+              }
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection_greece",
+              "pointRadius": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
