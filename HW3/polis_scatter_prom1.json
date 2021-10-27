@@ -1,7 +1,16 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 250,
+    "height": 500,
+    "padding": 5,
+
     "data": {
-        "url": "data/polis.json"
+        "url": "data/polis.json",
+        "format": {
+            "type": "json",
+            "property": "features"
+        }
+
     },
     "layer": [
         {
@@ -11,11 +20,11 @@
             },
             "encoding": {
                 "x": {
-                    "field": "Colonies",
+                    "field": "properties.prom 1",
                     "type": "quantitative"
                 },
                 "y": {
-                    "field": "staseis",
+                    "field": "properties.staseis",
                     "type": "quantitative"
                 }
             }
@@ -27,17 +36,17 @@
             },
             "transform": [
                 {
-                    "regression": "staseis",
-                    "on": "Colonies"
+                    "regression": "properties.staseis",
+                    "on": "properties.prom 1"
                 }
             ],
             "encoding": {
                 "x": {
-                    "field": "Colonies",
+                    "field": "properties.prom 1",
                     "type": "quantitative"
                 },
                 "y": {
-                    "field": "staseis",
+                    "field": "properties.staseis",
                     "type": "quantitative"
                 }
             }
@@ -45,8 +54,8 @@
         {
             "transform": [
                 {
-                    "regression": "staseis",
-                    "on": "Colonies",
+                    "regression": "properties.staseis",
+                    "on": "properties.Colonies",
                     "params": true
                 },
                 {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}

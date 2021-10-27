@@ -22,9 +22,18 @@ H2: Staseis happen due to inequality within the polis -> test staseis vs Polisit
 <p></p>
 
 <div id="polis_geographic"></div><p></p>
-<div id="polis_heat"></div>
-<div id="polis_box"></div>
-<div id="polis_scatter"></div>
+
+
+<div id="polis_box_reg"></div>
+<div id="polis_box_area"></div>
+<div id="polis_box_hell"></div>
+<div id="polis_box_policity"></div>
+<p></p>
+<div id="polis_scatter_prom1"></div>
+<div id="polis_scatter_prom2"></div>
+<div id="polis_scatter_prom3"></div>
+<div id="polis_scatter_colonies"></div>
+
 
 
 
@@ -36,20 +45,51 @@ H2: Staseis happen due to inequality within the polis -> test staseis vs Polisit
         .then(result => console.log(result))
         .catch(console.warn);
 
-    const spec_polis1 = "polis_heat.json";
-    vegaEmbed("#polis_heat", spec_polis1)
+
+    const spec_polis_hell = "polis_box_hell.json";
+    vegaEmbed("#polis_box_hell", spec_polis_hell)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
 
-    const spec_polis2 = "polis_box.json";
-    vegaEmbed("#polis_box", spec_polis2)
+    const spec_polis_reg = "polis_box_region.json";
+    vegaEmbed("#polis_box_reg", spec_polis_reg)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
 
-    const spec_polis3 = "polis_scatter.json";
-    vegaEmbed("#polis_scatter", spec_polis3)
+    const spec_polis_area = "polis_box_area1.json";
+    vegaEmbed("#polis_box_area", spec_polis_area)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_polis_pol = "polis_box_polisity.json";
+    vegaEmbed("#polis_box_policity", spec_polis_pol)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_polis3 = "polis_scatter_prom1.json";
+    vegaEmbed("#polis_scatter_prom1", spec_polis3)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_prom2 = "polis_scatter_prom2.json";
+    vegaEmbed("#polis_scatter_prom2", spec_prom2)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_prom3= "polis_scatter_prom3.json";
+    vegaEmbed("#polis_scatter_prom3", spec_prom3)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_colonies = "polis_scatter_colonies.json";
+    vegaEmbed("#polis_scatter_colonies", spec_colonies)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
