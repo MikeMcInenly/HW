@@ -13,16 +13,27 @@
       "value": "staseis",
       "bind": {
         "input": "select",
-        "options": [
+        "options": ["Bronze",
           "Colonies",
+          "Delian L",
           "Democracy",
+          "Elevation m",
+          "Grid",
           "Hellenicity",
+          "In/out",
           "Koinon",
           "Polisity",
-          "area1",
-          "delian",
-          "polis",
-          "region",
+          "Proxenoi",
+          "Region #",
+          "Silver",
+          "Victors",
+          "Walls",
+          "area 1",
+          "area 2",
+          "polis#",
+          "prom 1",
+          "prom 2",
+          "prom 3",
           "staseis"
         ]
       }
