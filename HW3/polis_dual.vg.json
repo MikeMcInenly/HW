@@ -13,27 +13,16 @@
       "value": "staseis",
       "bind": {
         "input": "select",
-        "options": ["Bronze",
+        "options": [
           "Colonies",
-          "Delian L",
           "Democracy",
-          "Elevation m",
-          "Grid",
           "Hellenicity",
-          "In/out",
           "Koinon",
           "Polisity",
-          "Proxenoi",
-          "Region #",
-          "Silver",
-          "Victors",
-          "Walls",
-          "area 1",
-          "area 2",
-          "polis#",
-          "prom 1",
-          "prom 2",
-          "prom 3",
+          "area1",
+          "delian",
+          "polis",
+          "region",
           "staseis"
         ]
       }
@@ -77,7 +66,7 @@
     },
     {
       "name": "polis",
-      "url": "data/polis.json",
+      "url": "data/polis_jj.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -86,7 +75,7 @@
     },
     {
       "name": "polis_no",
-      "url": "data/polis.json",
+      "url": "data/polis_jj.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -95,7 +84,7 @@
     },
     {
       "name": "pulldown",
-      "url": "data/polis.json",
+      "url": "data/polis_jj.json",
       "format": {
         "type": "json",
         "property": "features"

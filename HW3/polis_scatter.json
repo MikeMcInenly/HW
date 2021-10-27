@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "data/polis.json"
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "point",
+                "filled": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "Colonies",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "staseis",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "line",
+                "color": "firebrick"
+            },
+            "transform": [
+                {
+                    "regression": "staseis",
+                    "on": "Colonies"
+                }
+            ],
+            "encoding": {
+                "x": {
+                    "field": "Colonies",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "staseis",
+                    "type": "quantitative"
+                }
+            }
+        },
+        {
+            "transform": [
+                {
+                    "regression": "staseis",
+                    "on": "Colonies",
+                    "params": true
+                },
+                {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+            ],
+            "mark": {
+                "type": "text",
+                "color": "firebrick",
+                "x": "width",
+                "align": "right",
+                "y": -5
+            },
+            "encoding": {
+                "text": {"type": "nominal", "field": "R2"}
+            }
+        }
+    ]
+}

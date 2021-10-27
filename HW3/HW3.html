@@ -16,10 +16,17 @@
 <h1>Homework #3</h1>
 <h3>Insert Problem Context - how to look at the data and evaluate relationships that explain the frequency </h3><p></p>
 <h2>Hypotheses:</h2>
-<h3>H1: What is my hypothesis?!</h3>
+<h3>H1: What is my hypothesis?!
+H1: Staseis happen between conflicting poli. -> test staseis and Colonies vs hellenicity and area 1 -> people will fight people who are different from themselves; especially elitists.
+H2: Staseis happen due to inequality within the polis -> test staseis vs Polisity and Democracy, Delian L, and Koinon</h3>
 <p></p>
 
-<div id="polis_geographic"></div>
+<div id="polis_geographic"></div><p></p>
+<div id="polis_heat"></div>
+<div id="polis_box"></div>
+<div id="polis_scatter"></div>
+
+
 
 <script>
 
@@ -29,9 +36,23 @@
         .then(result => console.log(result))
         .catch(console.warn);
 
+    const spec_polis1 = "polis_heat.json";
+    vegaEmbed("#polis_heat", spec_polis1)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
 
+    const spec_polis2 = "polis_box.json";
+    vegaEmbed("#polis_box", spec_polis2)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
 
-
+    const spec_polis3 = "polis_scatter.json";
+    vegaEmbed("#polis_scatter", spec_polis3)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
 
 </script>
 </body>
