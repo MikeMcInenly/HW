@@ -16,8 +16,8 @@
 
   "mark": "boxplot",
   "encoding": {
-    "x": {"field": "properties.Polisity", "type": "ordinal"},
-    "color": {"field": "Polisity", "type": "ordinal", "legend": null},
+    "x": {"field": "properties.Democracy", "type": "ordinal"},
+    "color": {"field": "Democracy", "type": "ordinal", "legend": null},
     "y": {
       "field": "properties.staseis",
       "type": "quantitative",

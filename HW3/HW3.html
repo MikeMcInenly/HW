@@ -14,12 +14,16 @@
 
 </ul>
 <h1>Homework #3</h1>
-<h3>Insert Problem Context - how to look at the data and evaluate relationships that explain the frequency </h3><p></p>
+<h3>Historians recognize the importance of staseis, however, multiple theories persist regarding the cause of these violent conflicts.
+The reasons for staseis range from interstate conflict, economic or social inequality, and economic gain.  Given the dataset presented,
+how can evaluate the temporal or spatial frequency of staseis given the historical record of these violent events?</h3><p></p>
 <h2>Hypotheses:</h2>
-<h3>H1: What is my hypothesis?!
-H1: Staseis happen between conflicting poli. -> test staseis and Colonies vs hellenicity and area 1 -> people will fight people who are different from themselves; especially elitists.
-H2: Staseis happen due to inequality within the polis -> test staseis vs Polisity and Democracy, Delian L, and Koinon</h3>
+<h3>H1: I hypothesize the number of stasesis events is related to both interstate conflict, as well as conflict within the polis itself.
 <p></p>
+To evaluate this hypothesis I look at the number of staseis events given interstate variables region number and total area controlled
+by a polis.  I compare these results to variables I think describe staseis within the polis (hellenicity and democracy).</h3>
+<p></p>
+
 
 <div id="polis_geographic"></div><p></p>
 
@@ -27,7 +31,7 @@ H2: Staseis happen due to inequality within the polis -> test staseis vs Polisit
 <div id="polis_box_reg"></div>
 <div id="polis_box_area"></div>
 <div id="polis_box_hell"></div>
-<div id="polis_box_policity"></div>
+<div id="polis_box_democracy"></div>
 <p></p>
 <div id="polis_scatter_prom1"></div>
 <div id="polis_scatter_prom2"></div>
@@ -64,8 +68,8 @@ H2: Staseis happen due to inequality within the polis -> test staseis vs Polisit
         .then(result => console.log(result))
         .catch(console.warn);
 
-    const spec_polis_pol = "polis_box_polisity.json";
-    vegaEmbed("#polis_box_policity", spec_polis_pol)
+    const spec_polis_dem = "polis_box_democracy.json";
+    vegaEmbed("#polis_box_democracy", spec_polis_dem)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
