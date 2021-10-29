@@ -1,0 +1,47 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A vertical box plot showing median and lower and upper quartiles of the distribution of body mass of penguins.",
+    "width": 250,
+    "height": 500,
+
+    "data":
+    {"name":"polils",
+        "url": "data/polis.json",
+        "format": {
+            "type": "json",
+            "property": "features"
+        }
+    },
+
+    "mark": "boxplot",
+    "encoding": {
+        "x": {"field": "properties.Region #", "type": "ordinal"},
+        "color": {"field": "Region #", "type": "ordinal", "legend": null},
+        "y": {
+            "field": "properties.staseis",
+            "type": "quantitative",
+            "scale": {"zero": false}
+        }
+    },
+
+    "marks": [
+        {
+            "type": "rect",
+            "from": {"data":"table"},
+            "encode": {
+                "enter": {
+                    "x": {"scale": "xscale", "field": "properties.Region"},
+                    "width": {"scale": "xscale", "band": 1},
+                    "y": {"scale": "yscale", "field": "amount"},
+                    "y2": {"scale": "yscale", "value": 0}
+                },
+                "update": {
+                    "fill": {"value": "steelblue"}
+                },
+                "hover": {
+                    "fill": {"value": "red"}
+                }
+            }
+        }
+    ]
+}

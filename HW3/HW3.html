@@ -16,7 +16,7 @@
 <h1>Homework #3</h1>
 <h3>Historians recognize the importance of staseis, however, multiple theories persist regarding the cause of these violent conflicts.
 The reasons for staseis range from interstate conflict, economic or social inequality, and economic gain.  Given the dataset presented,
-how can evaluate the temporal or spatial frequency of staseis given the historical record of these violent events?</h3><p></p>
+how can we evaluate the temporal or spatial frequency of staseis given the historical record of these violent events?</h3><p></p>
 <h2>Hypotheses:</h2>
 <h3>H1: I hypothesize the number of stasesis events is related to both interstate conflict, as well as conflict within the polis itself.
 <p></p>
@@ -33,15 +33,31 @@ by a polis.  I compare these results to variables I think describe staseis withi
 <div id="polis_box_hell"></div>
 <div id="polis_box_democracy"></div>
 <p></p>
+
+<h3>Side-by-side box plots show the distribution of staseis events given a particular region, total area controlled, hellenicity, and democracy.  Hover over a box to see summary
+statistics appropriate for categorical variables.  Note not all factors have enough data to display, and this is a good way to visualize how meaningful a given variable might be. <p></p>
+For example, hellenicity has little relationship with staseis.  We know how "greek" the Greeks were based on their recorded history.  Staseis frequency based on how "Greek" the population was may not be
+    an appropriate measure due confounding variables that contribute to one's "Greekness" such as polisity.  A more appropriate measure of staseis frequency within a polis is democracy, as democracy tends to rise
+    as a common solution to inter-polis staseis.  As such, we would expect a higher number of staseis events to be associated with regime history centered on democracy.<p></p>
+
+    We see a relationship between the number of staseis events given the polis region and the total area controlled by a polis.   While the number of staseis varies by region,
+we do see staseis frequency increase as the total area controlled by a polis increases.<p></p>
+
+</h3>
 <div id="polis_scatter_prom1"></div>
-<div id="polis_scatter_prom2"></div>
-<div id="polis_scatter_prom3"></div>
-<div id="polis_scatter_colonies"></div>
+
+<h3>
+    Least square regression line is plotted to reproduce Dr. Arcenas's results (staseis vs prom 1).  His R squared value of 0.8626 is very different from my results (0.19).
+    Dr. Arcenas must have done a log transform because the original data violated the assumptions required for least squares linear regression.
+
+</h3>
 
 
 
 
 <script>
+
+    vega.scheme('colblndfr', ['#03E6B8','#F07D4D', '#F0AB0E', '#2024E0', '#D400DB' ]);
 
     const spec_polis = "polis_dual.vg.json";
     vegaEmbed("#polis_geographic", spec_polis)
@@ -80,17 +96,6 @@ by a polis.  I compare these results to variables I think describe staseis withi
         .then(result => console.log(result))
         .catch(console.warn);
 
-    const spec_prom2 = "polis_scatter_prom2.json";
-    vegaEmbed("#polis_scatter_prom2", spec_prom2)
-        // result.view provides access to the Vega View API
-        .then(result => console.log(result))
-        .catch(console.warn);
-
-    const spec_prom3= "polis_scatter_prom3.json";
-    vegaEmbed("#polis_scatter_prom3", spec_prom3)
-        // result.view provides access to the Vega View API
-        .then(result => console.log(result))
-        .catch(console.warn);
 
     const spec_colonies = "polis_scatter_colonies.json";
     vegaEmbed("#polis_scatter_colonies", spec_colonies)

@@ -44,18 +44,15 @@
     {
       "name": "projections",
       "values": [
-        {"type":"mercator","scale":800,"center":[34,36], "label": "Mediterranean"},
-        {"type":"mercator","scale":2000,"center":[30,36], "label": "Aegean"}
+        {"type":"mercator","scale":1500,"center":[32.25,36], "label": "Mediterranean"},
+        {"type":"mercator","scale":2650,"center":[26.5,37], "label": "Aegean"}
       ]
     },
     {
       "name": "world",
-      "url": "data/earth-coastlines-250m.geo.json"
+      "url": "data/earth-coastlines-500m.geo.json"
     },
-    {
-      "name": "rivers",
-      "url": "data/earth-rivers-500m.geo.json"
-    },
+
     {
       "name": "graticule",
       "transform": [
@@ -113,13 +110,13 @@
       "name": "color",
       "type": "quantize",
       "domain": [0, 20],
-      "range": {"scheme": "category10","count": 5}
+      "range": {"scheme": "colblndfr","count": 5}
     },
     {
       "name": "color2",
       "type": "quantize",
       "domain": {"data": "pulldown", "field": "pulldown"},
-      "range": {"scheme": "category10","count": 5}
+      "range": {"scheme": "colblndfr","count": 5}
     }
   ],
   "marks": [
@@ -163,6 +160,7 @@
             { "type": "geoshape", "projection": "projection" }
           ]
         },
+
         {
           "type": "shape",
           "from": {"data": "world"},
@@ -171,13 +169,15 @@
             "enter": {
               "strokeWidth": {"value": 0.25},
               "stroke": {"value": "#888"},
-              "fill": {"value": "Wheat"}
+              "fill": {"value": "#8CE66C"},
+              "fillOpacity": {"value": 0.2}
             }
           },
           "transform": [
             { "type": "geoshape", "projection": "projection" }
           ]
         },
+
         {
           "type": "shape",
           "from": {"data": "graticule"},
@@ -216,7 +216,7 @@
           "encode": {
             "update": {
               "opacity": {"value": 0.4},
-              "fill": {"value": "black"}
+              "fill": {"value": "transparent"}
 
             }
           },
