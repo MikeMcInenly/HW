@@ -74,7 +74,7 @@
     },
     {
       "name": "polis",
-      "url": "data/polis_jj.json",
+      "url": "data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -83,7 +83,7 @@
     },
     {
       "name": "polis_no",
-      "url": "data/polis_jj.json",
+      "url": "data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -92,7 +92,7 @@
     },
     {
       "name": "pulldown",
-      "url": "data/polis_jj.json",
+      "url": "data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
