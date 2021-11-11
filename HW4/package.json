@@ -1,0 +1,14 @@
+{
+  "name": "@d3/chord-diagram",
+  "main": "acdccedb962dbf5a@382.js",
+  "version": "382.0.0",
+  "homepage": "https://observablehq.com/@d3/chord-diagram",
+  "author": {
+    "name": "D3",
+    "url": "https://observablehq.com/@d3"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
