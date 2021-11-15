@@ -15,22 +15,17 @@
     // create the svg area
     var svg = d3.select("#my_dataviz")
         .append("svg")
-        .attr("width", 540)
-        .attr("height", 540)
+        .attr("width", 560)
+        .attr("height", 560)
         .append("g")
         .attr("transform", "translate(240,240)")
 
     // create a matrix
     var matrix = [
-<<<<<<< HEAD
-        [10,  58, 89, 29],
-        [ 81, 18, 20, 61],
-=======
-        [11,  58, 89, 28],
-        [ 51, 18, 20, 61],
->>>>>>> origin/other
-        [ 80, 145, 80, 85],
-        [ 103,   99,  40, 71]
+        [145.4917,  179.7625, 178.8478, 181.5625],
+        [ 181.6750, 173.4217, 193.9750, 151.8583],
+        [171.7458,  168.8875, 221.1292, 212.6958],
+        [ 191.6375, 192.6833, 143.0208, 185.8458],
     ];
 
     var colors = [ "#03E6B8", "#f8ae05", "#2024E0", "#D400DB"]
@@ -85,12 +80,12 @@
     // Add the ticks
     group
         .selectAll(".group-tick")
-        .data(function(d) { return groupTicks(d, 40); })    // Controls the number of ticks: one tick each 25 here.
+        .data(function(d) { return groupTicks(d, 360); })    // Controls the number of ticks: one tick each 25 here.
         .enter()
         .append("g")
-        .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 201 + ",0)"; })
+        .attr("transform", function(d) { return "rotate(" + (d.angle * 90 / Math.PI - 90) + ") translate(" + 201 + ",0)"; })
         .append("line")               // By default, x1 = y1 = y2 = 0, so no need to specify it.
-        .attr("x2", 6)
+        .attr("x2", 7)
         .attr("stroke", "black")
 
     // Add the labels of a few ticks:
@@ -102,12 +97,12 @@
         .append("g")
         .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 205 + ",0)"; })
         .append("text")
-        .attr("x", 8)
+        .attr("x", 9)
         .attr("dy", ".35em")
         .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
         .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
         .text(function(d) { return d.value })
-        .style("font-size", 9)
+        .style("font-size", 10)
 
 
     // Returns an array of tick angles and values for a given group and step.
