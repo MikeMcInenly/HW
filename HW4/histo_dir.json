@@ -1,0 +1,16 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width":200,
+    "height": 300,
+    "padding": 5,
+    "data": {"url": "data/FilterWind.csv"},
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "title": "Wind Direction (degrees)",
+            "bin": true,
+            "field": "Direction"
+        },
+        "y": {"aggregate": "count"}
+    }
+}

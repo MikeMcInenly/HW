@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homework #4</title>
+    <link href="../styles/main.css" rel="stylesheet"/>
+
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Open Sans & CSS -->
+    <link  href="styles/main.css" rel="stylesheet">
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+
+    </ul>
+</head>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #0a0a0a;
+        text-align: center;
+    }
+
+    line {
+        stroke: #000;
+        stroke-width: 1.px;
+    }
+
+    text {
+        font-size: 16px;
+    }
+
+    titles{
+        font-size: 16px;
+    }
+
+    path.chord {
+        fill-opacity: .70;
+    }
+</style>
+<body>
+<h1>
+    How does wind direction vary throughout the year at Salar de Pajonales, Chile?
+</h1>
+<div id="vis_time"></div>
+<div id="vis_histo_dir"></div>
+
+<script>
+
+    const spec = "scatter.json";
+    vegaEmbed("#vis_time", spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_bar_dir = "histo_dir.json";
+    vegaEmbed("#vis_histo_dir", spec_bar_dir)
+        .then(result => console.log(result))
+        .catch(console.warn);
+</script>
+
+
+<p></p>
+
+<h2><p></p><p></p>Subgroups -> N-E-S-W</h2>
+<div id="chart"></div>
+<script src="script.js"></script>
+
+</body>
+</html>
