@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<h3>Test Text</h3>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+
+
+    // create the svg area
+    var svg = d3.select("#my_dataviz")
+        .append("svg")
+        .attr("width", 560)
+        .attr("height", 560)
+        .append("g")
+        .attr("transform", "translate(240,240)")
+
+    // create a matrix
+    var matrix = [
+        [145.4917,  179.7625, 178.8478, 181.5625],
+        [ 181.6750, 173.4217, 193.9750, 151.8583],
+        [171.7458,  168.8875, 221.1292, 212.6958],
+        [ 191.6375, 192.6833, 143.0208, 185.8458],
+    ];
+
+    var colors = [ "#03E6B8", "#f8ae05", "#2024E0", "#D400DB"]
+
+
+    // give this matrix to d3.chord(): it will calculates all the info we need to draw arc and ribbon
+    var res = d3.chord()
+        .padAngle(0.05)
+        .sortSubgroups(d3.descending)
+        (matrix)
+
+    // add the groups on the outer part of the circle
+    svg
+        .datum(res)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) { return d.groups; })
+        .enter()
+        .append("g")
+        .append("path")
+        .style("fill", function(d,i){ return colors[i] })
+        .style("stroke", "black")
+        .attr("d", d3.arc()
+            .innerRadius(200)
+            .outerRadius(210)
+        )
+
+    // Add the links between groups
+    svg
+        .datum(res)
+        .append("g")
+        .selectAll("path")
+        .data(function(d) { return d; })
+        .enter()
+        .append("path")
+        .attr("d", d3.ribbon()
+            .radius(200)
+        )
+        .style("fill", function(d){ return(colors[d.source.index]) }) // colors depend on the source group. Change to target otherwise.
+        .style("stroke", "black");
+
+    // this group object use each group of the data.groups object
+    var group = svg
+        .datum(res)
+        .append("g")
+        .selectAll("g")
+        .data(function(d) { return d.groups; })
+        .enter()
+
+
+
+    // Add the ticks
+    group
+        .selectAll(".group-tick")
+        .data(function(d) { return groupTicks(d, 360); })    // Controls the number of ticks: one tick each 25 here.
+        .enter()
+        .append("g")
+        .attr("transform", function(d) { return "rotate(" + (d.angle * 90 / Math.PI - 90) + ") translate(" + 201 + ",0)"; })
+        .append("line")               // By default, x1 = y1 = y2 = 0, so no need to specify it.
+        .attr("x2", 7)
+        .attr("stroke", "black")
+
+    // Add the labels of a few ticks:
+    group
+        .selectAll(".group-tick-label")
+        .data(function(d) { return groupTicks(d, 40); })
+        .enter()
+        .filter(function(d) { return d.value % 40 === 0; })
+        .append("g")
+        .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + 205 + ",0)"; })
+        .append("text")
+        .attr("x", 9)
+        .attr("dy", ".35em")
+        .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
+        .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+        .text(function(d) { return d.value })
+        .style("font-size", 10)
+
+    }
+
+
+</script>
+
+
+
