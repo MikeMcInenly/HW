@@ -69,9 +69,69 @@
 
 <p></p>
 
-<h2><p></p><p></p>Subgroups -> N-E-S-W</h2>
+<h3><p></p><p></p>The chord diagram below uses counts to show how wind directions change from November 2018 to November 2019.  Data are grouped by wind direction and month, and a summary table is given below.
+</h3>
 <div id="chart"></div>
 <script src="script.js"></script>
+<style>
+    table {
+        border-collapse: collapse;
+        table-layout: auto;
+    }
+    table, th, td {
+        border: 1px solid black;
+        padding: 15px;
+        border-spacing: 10px;
+    }
+    table.center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<h2>Wind direction counts for months representing the start of a new season</h2>
+<table class="center">
+    <tr>
+        <th>Month</th>
+        <th>North</th>
+        <th>East</th>
+        <th>South</th>
+        <th>West</th>
+
+    </tr>
+    <tr>
+        <td>March</td>
+        <td>5</td>
+        <td>4</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>June</td>
+        <td>35</td>
+        <td>31</td>
+        <td>37</td>
+        <td>22</td>
+    </tr>
+    <tr>
+        <td>September</td>
+        <td>53</td>
+        <td>65</td>
+        <td>79</td>
+        <td>79</td>
+    </tr>
+    <tr>
+        <td>December</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+</table>
 
 </body>
 </html>
+
+[5, 35, 53, 2], //march fall
+[4, 31, 65, 1], //june winter
+[1, 37, 79, 1], //september spring
+[0,22, 79, 0],

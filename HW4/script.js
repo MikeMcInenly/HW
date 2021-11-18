@@ -33,20 +33,50 @@ var outerRadius = Math.min(width, height) / 2  - 100,
 ////////////////////////// Data ////////////////////////////
 ////////////////////////////////////////////////////////////
 
-var Names = ["Fall","Winter","Spring","Summer"];
+var Names1 = ["Fall","Winter","Spring","Summer"];
 
-var matrix = [
+var Names = ["North","East","South","West"];
+
+
+//[N,E,S,W] for each month
+var matrix1 = [
     [32.02, 149.06, 212.54, 328.5], //march fall
     [44.58, 138.72, 212.47, 348.20], //june winter
     [12.6, 140.89, 220.04, 271.00], //september spring
-    [328.5,348.20, 271.00, 0], //december summer
+    [0,134.71, 212.42, 0], //december summer
+
+];
+
+//[march,june,sept,dec] for each N,E,S,W
+var matrix1 = [
+    [32.02, 44.58, 12.6, 0], //North (m,j,s,d)
+    [149.06, 138.72, 140.89, 134.71], //East
+    [212.54, 212.47, 220.04, 212.42], //South
+    [328.5,348.20, 271.00, 0] //West
+
+];
+
+//[counts for N,E,S,W] for each month
+var matrix1 = [
+    [5, 35, 53, 2], //march fall
+    [4, 31, 65, 1], //june winter
+    [1, 37, 79, 1], //september spring
+    [0,22, 79, 0], //december summer
+];
+
+//[counts for m.j.s.d] for each n,e,s,w
+var matrix = [
+    [5, 4, 1, 0], //N
+    [35, 31, 37, 22], //E
+    [53, 65, 79, 79], //S
+    [2,1, 1, 0], //W
 
 ];
 
 var chord = d3.layout.chord()
     .padding(.02)
-    // .sortSubgroups(d3.descending) //sort the chords inside an arc from high to low
-    //.sortChords(d3.descending) //which chord should be shown on top when chords cross. Now the biggest chord is at the bottom
+    .sortSubgroups(d3.descending) //sort the chords inside an arc from high to low
+    .sortChords(d3.descending) //which chord should be shown on top when chords cross. Now the biggest chord is at the bottom
     .matrix(matrix);
 
 var arc = d3.svg.arc()
@@ -112,12 +142,12 @@ var chords = wrapper.selectAll("path.chord")
 
 //Arcs
 g.append("title")
-    .text(function(d, i) {return Math.round(d.value) + " wind observations in " + Names[i];});
+    .text(function(d, i) {return Math.round(d.value) + " observations in " + Names[i];});
 
 //Chords
 chords.append("title")
     .text(function(d) {
-        return [Names[d.target.index], " to ", Names[d.source.index]].join("");
+        return [Math.round(d.source.value), " observations from ", Names[d.target.index], " to ", Names[d.source.index]].join("");
     });
 
 //Include the offset in de start and end angle to rotate the Chord diagram clockwise
