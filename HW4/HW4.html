@@ -19,13 +19,14 @@
 
     </ul>
 </head>
+
 <style>
     body {
         font-family: 'Open Sans', sans-serif;
         font-size: 14px;
         font-weight: 400;
         color: #0a0a0a;
-        text-align: center;
+        text-align: left;
     }
 
     line {
@@ -49,8 +50,8 @@
 <h1>
     How does wind direction vary throughout the year at Salar de Pajonales, Chile?
 </h1>
-<div id="vis_time"></div>
-<div id="vis_histo_dir"></div>
+
+
 
 <script>
 
@@ -67,10 +68,32 @@
 </script>
 
 
-<p></p>
+<h3><p></p>
+    The chord diagram below uses counts to show how wind directions change from November 2018 to November 2019, and it shows the relationship
+    between changes in wind directions with respect to seasonal change. A matrix of counts representing the number of times wind blew from the north, south, east, and west for months that represent the beginning
+    of a new season.  Data were collected in the southern hemisphere, therefore, the progression from fall, winter, spring, to summer is represented
+    by march, june, september, and december.
+    <p></p>
+    I choose the chord diagram because each chord represents a bidirectional flow between cardinal direction for a month representing a change in season.
+    In other words, the diagram visualizes changes in wind directions at Salar de Pajonales, Chile for select months over the course of one year.  The circle is split up into four cardinal directions with
+    the length of each group scaled to the number of times wind blew from that direction.  We can see the majority of direction observations originate from the south, as is expected
+    for the area.  Having spent a week at the field site, I observed major winds that originated from the north during the month of october.  From these observations, I hypothesize that
+    wind directions as Salar de Pajonales behave atypically with respect to the prevailing winds in South America.  I've called upon the chord diagram to address this question.
+    <p></p>
+    The color of the chord shows which wind direction has been the net gainer.  We see that North is a true net gainer because all of its chords are the origin color (aqua/green).  Furthermore, all the chords originating from
+    north are thin which tells us winds from the north typically change to either the east or south.  However, in a few cases behavior is atypical.  Sometimes northerly winds remain from the north and
+    sometimes they switch to the west as seasons change.  Chords that look like hills represent the observations that did not change directions as the seasons changed.  Wind directions from the south and east
+    maintained their direction for most months, which is typical for the area.  The hill on the north chord, while small, is a variation in the data not explained by the overall trend.
+    <p></p>
+    Hover over the chords to get a better idea of how direction changes with respect to seasonal change.  The connection between seasons and wind directions is still not clear.  Discussion to follow on the annotated PDF.
 
-<h3><p></p><p></p>The chord diagram below uses counts to show how wind directions change from November 2018 to November 2019.  Data are grouped by wind direction and month, and a summary table is given below.
+
 </h3>
+<p>
+
+</p>
+
+<p></p>
 <div id="chart"></div>
 <script src="script.js"></script>
 <style>
@@ -88,54 +111,48 @@
         margin-right: auto;
     }
 </style>
+
+<p>
+</p>
 <h2>Wind direction counts for months representing the start of a new season</h2>
-<table class="center">
+<table class="left">
     <tr>
-        <th>Month</th>
-        <th>North</th>
-        <th>East</th>
-        <th>South</th>
-        <th>West</th>
+        <th>Direction</th>
+        <th>March</th>
+        <th>June</th>
+        <th>September</th>
+        <th>December</th>
 
     </tr>
     <tr>
-        <td>March</td>
+        <td>North</td>
         <td>5</td>
         <td>4</td>
         <td>1</td>
         <td>0</td>
     </tr>
     <tr>
-        <td>June</td>
+        <td>East</td>
         <td>35</td>
         <td>31</td>
         <td>37</td>
         <td>22</td>
     </tr>
     <tr>
-        <td>September</td>
+        <td>South</td>
         <td>53</td>
         <td>65</td>
         <td>79</td>
         <td>79</td>
     </tr>
     <tr>
-        <td>December</td>
+        <td>West</td>
         <td>2</td>
         <td>1</td>
         <td>1</td>
         <td>0</td>
     </tr>
 </table>
-
 </body>
 </html>
 
-//[counts for m.j.s.d] for each n,e,s,w
-var matrix = [
-[5, 4, 1, 0], //N
-[35, 31, 37, 22], //E
-[53, 65, 79, 79], //S
-[2,1, 1, 0], //W
-
-];

@@ -38,24 +38,6 @@ var Names1 = ["Fall","Winter","Spring","Summer"];
 var Names = ["North","East","South","West"];
 
 
-//[N,E,S,W] for each month
-var matrix1 = [
-    [32.02, 149.06, 212.54, 328.5], //march fall
-    [44.58, 138.72, 212.47, 348.20], //june winter
-    [12.6, 140.89, 220.04, 271.00], //september spring
-    [0,134.71, 212.42, 0], //december summer
-
-];
-
-//[march,june,sept,dec] for each N,E,S,W
-var matrix1 = [
-    [32.02, 44.58, 12.6, 0], //North (m,j,s,d)
-    [149.06, 138.72, 140.89, 134.71], //East
-    [212.54, 212.47, 220.04, 212.42], //South
-    [328.5,348.20, 271.00, 0] //West
-
-];
-
 //[counts for N,E,S,W] for each month
 var matrix1 = [
     [5, 35, 53, 2], //march fall
@@ -126,7 +108,7 @@ g.append("text")
 //////////////////// Draw inner chords /////////////////////
 ////////////////////////////////////////////////////////////
 
-var colors = ["#00A0B0","#CC333F","#EDC951"];
+
 var chords = wrapper.selectAll("path.chord")
     .data(chord.chords)
     .enter().append("path")
@@ -149,9 +131,5 @@ chords.append("title")
     .text(function(d) {
         return [Math.round(d.source.value), " observations from ", Names[d.target.index], " to ", Names[d.source.index]].join("");
     });
-
-//Include the offset in de start and end angle to rotate the Chord diagram clockwise
-function startAngle(d) { return d.startAngle + offset; }
-function endAngle(d) { return d.endAngle + offset; }
 
 
